@@ -1,0 +1,35 @@
+import json
+
+# Nombre de tu archivo JSON
+nombre_archivo_json = 'fakenewsNewtral.json'  # Reemplaza con el nombre de tu archivo
+
+# Nombre del archivo de texto donde se guardarán los enlaces
+nombre_archivo_links = 'enlaces_noticias1.txt'
+
+enlaces = []
+
+try:
+    # Lee todo el archivo JSON de una vez
+    with open(nombre_archivo_json, 'r', encoding='utf-8') as archivo:
+        datos_completos = json.load(archivo)
+
+    # Itera sobre las claves del diccionario (ej. '0', '1', '2', etc.)
+    for clave in datos_completos:
+        objeto_json = datos_completos[clave]
+        link = objeto_json.get('link', None) # Usa .get para evitar errores si el link no existe
+
+        # Si el enlace no es nulo o vacío, lo agrega a la lista
+        if link:
+            enlaces.append(link)
+
+    # Guarda la lista de enlaces en un archivo de texto, uno por línea
+    with open(nombre_archivo_links, 'w', encoding='utf-8') as archivo_txt:
+        for enlace in enlaces:
+            archivo_txt.write(enlace + '\n')
+
+    print(f"Se han extraído y guardado {len(enlaces)} enlaces en el archivo '{nombre_archivo_links}'.")
+
+except FileNotFoundError:
+    print(f"Error: El archivo '{nombre_archivo_json}' no fue encontrado.")
+except json.JSONDecodeError:
+    print(f"Error: El archivo '{nombre_archivo_json}' no es un JSON válido.")
