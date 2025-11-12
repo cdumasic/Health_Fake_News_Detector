@@ -45,6 +45,6 @@ def aletorizar_json(nombre_archivo_entrada, nombre_archivo_salida=None):
 
 
 # --- Ejemplo de uso ---
-nombre_archivo = './data/Texto_filtro1/data_limpia.json'
-salida = './data/Texto_filtro1/datos_limpios.json'  # puedes dejarlo None para sobrescribir
+nombre_archivo = './data/Texto_filtro1/datos_aumentados_final.json'
+salida = './data/Texto_filtro1/datos_aumentados_final_aleatorio.json'  # puedes dejarlo None para sobrescribir
 aletorizar_json(nombre_archivo, salida)

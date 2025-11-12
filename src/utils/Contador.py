@@ -60,7 +60,7 @@ def contar_elementos_json(nombre_archivo):
 
 
 # --- Ejemplo de uso ---
-nombre_del_archivo = './data/Texto_filtro1/data_limpia.json'  # Reemplaza con el nombre de tu archivo
+nombre_del_archivo = '../../data/Texto_filtro1/data_limpia.json'  # Reemplaza con el nombre de tu archivo
 resultados = contar_elementos_json(nombre_del_archivo)
 
 if resultados:

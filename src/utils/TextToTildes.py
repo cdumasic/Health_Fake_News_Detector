@@ -63,8 +63,8 @@ def procesar_archivo_texto(archivo_entrada, archivo_salida):
         
 # --- Configuración y Ejecución ---
 
-ARCHIVO_ENTRADA = 'data/Texto_base/data3.txt' 
-ARCHIVO_SALIDA = 'data/Texto_filtro1/data3.txt'
+ARCHIVO_ENTRADA = '../../data/Texto_base/data3.txt' 
+ARCHIVO_SALIDA = '../../data/Texto_filtro1/data3.txt'
 
 # Iniciar el proceso
 procesar_archivo_texto(ARCHIVO_ENTRADA, ARCHIVO_SALIDA)

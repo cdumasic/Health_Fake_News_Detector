@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
 # Ruta del modelo entrenado
-model_path = "./beto-fakenews-model"
+model_path = "./beto-fakenews-aumented-model"
 
 # Carga el modelo y el tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_path)

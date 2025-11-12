@@ -51,8 +51,8 @@ ARCHIVO_CSV = 'datos_ejemplo.csv'
 SALIDA_JSON_CSV = 'datos_ejemplo_csv.json'
 """
 # Configuración para un archivo XLSX
-ARCHIVO_XLSX = 'data/Texto_base/DatasetLimpio3.xlsx'
-SALIDA_JSON_XLSX = 'data/Texto_filtro1/datos3.json'
+ARCHIVO_XLSX = '../../data/Texto_base/DatasetLimpio3.xlsx'
+SALIDA_JSON_XLSX = '../../data/Texto_filtro1/datos3.json'
 
 # Correr el proceso para el CSV
 """

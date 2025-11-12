@@ -99,8 +99,8 @@ def procesar_archivo_json(archivo_entrada, archivo_salida):
 # --- Configuración y Ejecución ---
 
 # Asegúrate de que estas rutas apuntan a tus archivos JSON
-ARCHIVO_ENTRADA = 'data/Texto_filtro1/datos.json' 
-ARCHIVO_SALIDA = 'data/Texto_filtro1/data_limpia.json'
+ARCHIVO_ENTRADA = '../../data/Texto_filtro1/datos.json' 
+ARCHIVO_SALIDA = '../../data/Texto_filtro1/data_limpia.json'
 
 # Iniciar el proceso
 procesar_archivo_json(ARCHIVO_ENTRADA, ARCHIVO_SALIDA)

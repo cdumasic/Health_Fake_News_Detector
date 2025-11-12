@@ -46,6 +46,6 @@ def reordenar_keys_json(nombre_archivo_entrada, nombre_archivo_salida=None):
 
 
 # --- Ejemplo de uso ---
-nombre_archivo = './data/Texto_filtro1/datos_limpios.json'
-salida = './data/Texto_filtro1/datos_reordenados.json'  # puedes dejarlo None para sobrescribir
+nombre_archivo = 'data/Texto_filtro1/datos_aumentados_final_aleatorio.json'
+salida = 'data/Texto_filtro1/datos_finales_aumentados.json'  # puedes dejarlo None para sobrescribir
 reordenar_keys_json(nombre_archivo, salida)
