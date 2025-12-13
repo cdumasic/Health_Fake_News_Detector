@@ -3,11 +3,9 @@ from datasets import Dataset
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, DataCollatorWithPadding
 import evaluate
 import torch
-from sklearn.metrics import confusion_matrix
-import numpy as np
 
 # Se añaden las rutas del modelo a probar y el dataset de pruebas
-MODEL_PATH = "./modelos/beto-fakenews-augmented-model"
+MODEL_PATH = "./modelos/albeto-fakenews-augmented-model"
 NEW_TEST_DATA_PATH = "./data/Texto_final/test_augmented.json" 
 
 # Se carga el dataset de pruebas
@@ -35,23 +33,15 @@ accuracy = evaluate.load("accuracy")
 f1 = evaluate.load("f1")
 precision = evaluate.load("precision")
 recall = evaluate.load("recall")
-roc_auc = evaluate.load("roc_auc")
 
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
-    logits_tensor = torch.tensor(logits) if not isinstance(logits, torch.Tensor) else logits.cpu()
-    predictions = torch.argmax(logits_tensor, dim=-1).cpu().numpy()
-    labels_np = labels 
-    probabilities = torch.nn.functional.softmax(logits_tensor, dim=-1)[:, 1].cpu().numpy()
-    cm = confusion_matrix(labels_np, predictions)
-    cm_str = np.array2string(cm)
+    predictions = torch.argmax(torch.tensor(logits), dim=-1)
     return {
         "accuracy": accuracy.compute(predictions=predictions, references=labels)["accuracy"],
         "f1": f1.compute(predictions=predictions, references=labels)["f1"],
         "precision": precision.compute(predictions=predictions, references=labels)["precision"],
         "recall": recall.compute(predictions=predictions, references=labels)["recall"],
-        "roc_auc": roc_auc.compute(prediction_scores=probabilities, references=labels)["roc_auc"],
-        "confusion_matrix": cm_str
     }
 
 # Se crear un pequeño entrenador que verifica el modelo
@@ -65,9 +55,6 @@ trainer = Trainer(
 # Se evalua el modelo con el conjunto de pruebas
 results = trainer.evaluate(eval_dataset=test_dataset)
 
-print("\n📊 Resultados de la prueba:")
+print("\nResultados de la prueba:")
 for k, v in results.items():
-    if isinstance(v, str):
-        print(f"{k}: {v}")
-    else:
-        print(f"{k}: {v:.4f}")
+    print(f"{k}: {v:.4f}")
